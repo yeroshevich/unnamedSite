@@ -1,22 +1,54 @@
-import React from 'react';
+import React,{useState} from 'react';
 import classes from './Layout.module.scss';
+import {Button, Container, createTheme, Grid, NextUIProvider, Text} from "@nextui-org/react";
+import Header from "./Header/Header";
 
-const Layout = ({children}) => {
+
+
+
+
+const Layout = (props) => {
+    const [isLightTheme,setLightTheme] = useState(true)
+
+
+    const themes = [
+        createTheme({
+            type: 'light',
+            theme: {
+                colors: {
+                    headerBack:'#3083DC',
+                    background:'#F8FFE5',
+                    color:'#FFF',
+                },
+                fontSizes:{
+                    size:'16',
+                }
+            }
+        }),createTheme({
+            type: 'dark',
+            theme: {
+                colors: {
+                    headerBack:'#3A4642',
+                    background:'#1F1728'
+                },
+            }
+        })]
+    const changeTheme=()=>setLightTheme(prev=>!prev);
+
+    const getTheme=()=>themes[Number(isLightTheme)];
+
+
     return (
-        <>
-            {children}
-            <header>
-                logo
-                <div>
-                    <div>gsdgds</div>
-                    <div>gsdgds</div>
-                    <div>gsdgdsn</div>
-                </div>
-            </header>
-            <footer>
+        <NextUIProvider theme={getTheme()}>
+            <>
+                {props.children}
+                <Header changeTheme={changeTheme}/>
+                <footer>
 
-            </footer>
-        </>
+                </footer>
+            </>
+        </NextUIProvider>
+
     );
 };
 

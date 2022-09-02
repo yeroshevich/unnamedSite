@@ -1,0 +1,74 @@
+.nav{
+  display: grid;
+  grid-template-columns: min-content min-content min-content min-content;
+  grid-gap: 25px;
+}
+.headerGrid{
+  align-items: center;
+  justify-content: center;
+}
+.header{
+  padding: 10px;
+  border-radius: 25px;
+
+  .logo{
+    margin-left: 30%;
+  }
+  .menuButtonBlock{
+    margin-left: 41%;
+    display: none;
+    .menuButton{
+      width:50px;
+      &:hover{
+        cursor: pointer;
+      }
+      & div{
+        background-color: #fff;
+        width:50px;
+        height: 3px;
+        margin-top: 5px;
+      }
+    }
+
+    .wrapMenuList{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      background-color: #fff;
+      color:black;
+
+      transition: 1s;
+
+      left:5%;
+      border-radius: 25px;
+      padding: 25px;
+      text-align: center;
+      & li{
+        margin-inline:10px;
+      }
+    }
+
+  }
+}
+.hidden{
+  opacity: 0;
+  visibility: hidden;
+}
+.visible{
+  opacity: 1;
+  visibility: visible;
+}
+@media screen and (max-width: 660px) {
+  .header{
+    padding-inline: 25px;
+    .logo{
+      margin-left: 30%;
+    }
+    .menuGrid{
+      display: none;
+    }
+    .menuButtonBlock{
+      display: block;
+    }
+  }
+}
