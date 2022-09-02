@@ -6,22 +6,15 @@ import {useState} from "react";
 const Header = ({changeTheme}) => {
     const [isMenuShowed,setShowMenu] = useState(false)
     const showMenu = ()=>setShowMenu(prev=>!prev)
+    const closeMenu = ()=>setShowMenu(false)
 
-    useEffect(()=>{
-        document.addEventListener('Click',(e)=>{
-            if(e.target.id ==='root') {
-                setShowMenu(false)
-                console.log(isMenuShowed)
-            }
-            console.log()
-        })
-    },[])
+
     return (
-        <div>
+        <div >
             <Container className={classes.header} css={{background:'$headerBack'}}>
                 <Grid.Container justify={'center'} className={classes.headerGrid}>
-                    <Grid xs={5} >
-                        <Text h3 className={classes.logo} >logo</Text>
+                    <Grid xs={5} className={classes.logo}>
+                        <Text h3>logo</Text>
                     </Grid>
                     <Grid className={classes.menuGrid}>
                         <div className={classes.nav + " "+classes.headerGrid}>
@@ -38,24 +31,36 @@ const Header = ({changeTheme}) => {
                         </div>
                     </Grid>
                 </Grid.Container>
-                <div className={classes.menuButtonBlock} >
-                    <div className={classes.menuButton} onClick={showMenu}>
+                <div
+                    className={classes.menuButtonBlock} >
+                    <div
+                        className={classes.menuButton}
+                         onClick={showMenu}>
                         <div></div>
                         <div></div>
                         <div></div>
                     </div>
-                    <ul className={classes.wrapMenuList + ' ' +((isMenuShowed)?classes.visible:classes.hidden)}>
-                        <li>Главная</li>
-                        <li>Главная</li>
-                        <li>Главная</li>
-                        <li>
-                            <Button
-                                onPress={changeTheme}
-                            >
-                                Change theme
-                            </Button>
-                        </li>
-                    </ul>
+                    <Container
+                        css={{background:'$headerBack'}}
+                        className={classes.cont + ' ' +((isMenuShowed)?classes.visible:classes.hidden)}>
+                        <ul
+                            onBlur={closeMenu}
+                            className={classes.wrapMenuList }
+                        >
+                            <li>Главная</li>
+                            <li>Главная</li>
+                            <li>Главная</li>
+                            <li>
+                                <Button
+                                    onPress={changeTheme}
+                                    color="error"
+                                    auto
+                                >
+                                    Change theme
+                                </Button>
+                            </li>
+                        </ul>
+                    </Container>
                 </div>
             </Container>
         </div>

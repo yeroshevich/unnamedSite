@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './Layout.module.scss';
 import {Button, Container, createTheme, Grid, NextUIProvider, Text} from "@nextui-org/react";
 import Header from "./Header/Header";
@@ -37,12 +37,12 @@ const Layout = (props) => {
 
     const getTheme=()=>themes[Number(isLightTheme)];
 
-
     return (
         <NextUIProvider theme={getTheme()}>
             <>
-                {props.children}
+
                 <Header changeTheme={changeTheme}/>
+                {props.children}
                 <footer>
 
                 </footer>

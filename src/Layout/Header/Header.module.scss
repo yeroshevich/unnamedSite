@@ -12,11 +12,12 @@
   border-radius: 25px;
 
   .logo{
-    margin-left: 30%;
+    display: flex;
+    justify-content: center;
   }
   .menuButtonBlock{
-    margin-left: 41%;
     display: none;
+
     .menuButton{
       width:50px;
       &:hover{
@@ -29,24 +30,27 @@
         margin-top: 5px;
       }
     }
-
-    .wrapMenuList{
+    .cont{
+      margin-top: 34px;
       position: absolute;
-      display: flex;
-      justify-content: center;
-      background-color: #fff;
-      color:black;
-
       transition: 1s;
 
-      left:5%;
       border-radius: 25px;
       padding: 25px;
-      text-align: center;
-      & li{
-        margin-inline:10px;
+
+      .wrapMenuList{
+        display: flex;
+        justify-content: center;
+
+        & li{
+          margin-inline:10px;
+          display: flex;
+          justify-content: center;
+        }
+
       }
     }
+
 
   }
 }
@@ -62,13 +66,20 @@
   .header{
     padding-inline: 25px;
     .logo{
-      margin-left: 30%;
+      text-align: center;
     }
     .menuGrid{
       display: none;
     }
     .menuButtonBlock{
-      display: block;
+      display: flex;
+      align-content: center;
+      justify-content: center;
     }
   }
+}
+@media screen and (max-width: 460px){
+    .wrapMenuList{
+      flex-direction: column;
+    }
 }
