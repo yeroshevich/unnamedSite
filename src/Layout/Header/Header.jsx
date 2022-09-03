@@ -53,7 +53,7 @@ const Header = ({changeTheme}) => {
                             <li>
                                 <Button
                                     onPress={changeTheme}
-                                    color="error"
+                                    color="gradient"
                                     auto
                                 >
                                     Change theme

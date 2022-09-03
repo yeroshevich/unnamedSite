@@ -28,10 +28,10 @@ const Layout = (props) => {
             type: 'dark',
             theme: {
                 colors: {
-                    headerBack:'#3A4642',
+                    headerBack:'#4E4187',
                     background:'#1F1728'
                 },
-            }
+            },
         })]
     const changeTheme=()=>setLightTheme(prev=>!prev);
 
@@ -41,8 +41,12 @@ const Layout = (props) => {
         <NextUIProvider theme={getTheme()}>
             <>
 
-                <Header changeTheme={changeTheme}/>
-                {props.children}
+                <div className={classes.header}>
+                    <Header changeTheme={changeTheme}/>
+                </div>
+                <div className={classes.content}>
+                    {props.children}
+                </div>
                 <footer>
 
                 </footer>
